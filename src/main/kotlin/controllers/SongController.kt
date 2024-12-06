@@ -1,4 +1,4 @@
 package controllers
 
-class SongController  {
+class SongController {
 }

@@ -1,7 +1,6 @@
-import utils.readIntNotNull
 import utils.readNextInt
-import java.lang.System.exit as exit
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlin.system.exitProcess
 
 private val logger = KotlinLogging.logger {}
 
@@ -29,8 +28,7 @@ fun mainMenu(): Int {
 
 fun runMenu() {
     do {
-        val option = mainMenu()
-        when (option) {
+        when (val option = mainMenu()) {
             1  -> createPlaylist()
             2  -> existPlaylist()
             3  -> addSong()
@@ -64,6 +62,6 @@ fun favouriteSong(){
 
 fun exitApp(){
     logger.info{"existApp() function invoked"}
-    exit(/* status = */ 0)
+    exitProcess(/* status = */ 0)
 }
 

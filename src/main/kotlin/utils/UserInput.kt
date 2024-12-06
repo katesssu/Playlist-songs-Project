@@ -1,5 +1,7 @@
 package utils
 
+import kotlin.Exception as Exception
+
 fun readIntNotNull() = readlnOrNull()?.toIntOrNull() ?: -1
 
 fun readNextInt(prompt: String?): Int {
@@ -24,7 +26,7 @@ fun readNextChar(prompt: String?): Char {
         try {
             print(prompt)
             return readln().first()
-        } catch (e: NumberFormatException) {
+        } catch (e: Exception) {
             System.err.println("\tEnter a character please.")
         }
     } while (true)

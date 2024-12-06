@@ -1,7 +1,9 @@
 import utils.readIntNotNull
 import utils.readNextInt
 import java.lang.System.exit as exit
+import io.github.oshai.kotlinlogging.KotlinLogging
 
+private val logger = KotlinLogging.logger {}
 
 fun main(){
     runMenu()
@@ -41,27 +43,27 @@ fun runMenu() {
 }
 
 fun createPlaylist(){
-    println("You chose to Create a Playlist")
+    logger.info{"createPlaylist() function invoked"}
 }
 
 fun existPlaylist(){
-    println("You chose to view an existing Playlist")
+    logger.info{"existPlaylist() function invoked"}
 }
 
 fun addSong(){
-    println("You chose to Add a Song")
+    logger.info{"addSong() function invoked"}
 }
 
 fun deletePlaylist(){
-    println("You chose to delete a playlist")
+    logger.info{"deletePlaylist() function invoked"}
 }
 
 fun favouriteSong(){
-    println("You chose to favourite a Song")
+    logger.info{"favouriteSong() function invoked"}
 }
 
 fun exitApp(){
-    println("Exiting the app, goodbye!")
+    logger.info{"existApp() function invoked"}
     exit(/* status = */ 0)
 }
 

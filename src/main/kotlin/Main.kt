@@ -1,67 +1,67 @@
+import controllers.PlaylistAPI
+import controllers.PlaylistSongAPI
+import controllers.SongAPI
+import models.Playlist
+import models.Song
 import utils.readNextInt
-import io.github.oshai.kotlinlogging.KotlinLogging
-import kotlin.system.exitProcess
+import utils.readNextLine
 
-private val logger = KotlinLogging.logger {}
+fun main() {
+    val playlistAPI = PlaylistAPI()
+    val songAPI = SongAPI()
+    val playlistSongAPI = PlaylistSongAPI()
 
-fun main(){
-    runMenu()
-}
+    var choice: Int
 
-fun mainMenu(): Int {
-    print("""
-          ----------------------------------
-          |          PLAYLIST APP          |
-          ----------------------------------
-          | PLAYLIST MENU                  |
-          |   1) Create playlist           |
-          |   2) See existing playlists    |
-          |   3) Add song to playlists     |
-          |   4) Delete a playlist         |
-          |   5) Favourite songs           |
-          ----------------------------------
-          |   0) Exit                      |
-          ----------------------------------
-          ==>> """.trimMargin(">"))
-    return readNextInt(" > ==>>")
-}
-
-fun runMenu() {
     do {
-        when (val option = mainMenu()) {
-            1  -> createPlaylist()
-            2  -> existPlaylist()
-            3  -> addSong()
-            4  -> deletePlaylist()
-            5  -> favouriteSong()
-            0  -> exitApp()
-            else -> println("Invalid option entered: $option")
+        choice = readNextInt("""
+                      |Menu:
+                      |  1. Add Song
+                      |  2. Create Playlist
+                      |  3. Add Song to Playlist
+                      |  4. View Songs
+                      |  5. View Playlists
+                      |  0. Exit
+                      |  > """.trimMargin("|"))
+
+        when (choice) {
+            1 -> {
+                // Add Song
+                val songName = readNextLine("Song Name: ")
+                val artist = readNextLine("Artist: ")
+                val duration =  readNextLine("Duration: ")
+                val song = Song(0, songName, artist, duration)
+                songAPI.addSong(song)
+            }
+            2 -> {
+                // Add Playlist
+                val playlistName = readNextLine("Playlist Name: ")
+                val playlist = Playlist(0, playlistName)
+                playlistAPI.addPlaylist(playlist)
+            }
+            3 -> {
+                // Add Song to Playlist
+                val songId = readNextInt("Enter song id: ")
+                val playlistId = readNextInt("Enter playlist id: ")
+                playlistSongAPI.addSongToPlaylist(songId, playlistId)
+            }
+            4 -> {
+                // View Songs
+                println("Songs: \n${songAPI.listSongs()}")
+            }
+            5 -> {
+                // View Playlists
+                println(" Playlists: \n${playlistAPI.listPlaylists()}")
+            }
+            6 -> {
+                // List Songs in Playlists
+                val playlistId = readNextInt("Enter playlist id: ")
+                println(playlistSongAPI.listSongsInPlaylist(playlistId))
+            }
+            0 -> {
+                println("Exiting...")
+            }
+            else -> println("Invalid choice: $choice. Please try again.")
         }
-    } while (true)
+    } while (choice != 0)
 }
-
-fun createPlaylist(){
-    logger.info{"createPlaylist() function invoked"}
-}
-
-fun existPlaylist(){
-    logger.info{"existPlaylist() function invoked"}
-}
-
-fun addSong(){
-    logger.info{"addSong() function invoked"}
-}
-
-fun deletePlaylist(){
-    logger.info{"deletePlaylist() function invoked"}
-}
-
-fun favouriteSong(){
-    logger.info{"favouriteSong() function invoked"}
-}
-
-fun exitApp(){
-    logger.info{"existApp() function invoked"}
-    exitProcess(/* status = */ 0)
-}
-

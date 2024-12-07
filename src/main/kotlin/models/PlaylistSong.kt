@@ -1,9 +1,8 @@
 package models
 
-class PlaylistSong {
-    data class PlaylistSong(
-                            var playlistId: Int,
-                            var songId: Int,
-                            var order: Int = 0,
-    )
-}
+import java.sql.RowId
+
+data class PlaylistSong(
+    var songId: Int,
+    var playlistId: Int
+)

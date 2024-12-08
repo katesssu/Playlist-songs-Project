@@ -24,6 +24,9 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+
+    //deleted klint code that i had here
+
 }
 
 

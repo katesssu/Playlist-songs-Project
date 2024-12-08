@@ -15,14 +15,25 @@ fun main() {
 
     do {
         choice = readNextInt("""
-                      |Menu:
-                      |  1. Add Song
-                      |  2. Create Playlist
-                      |  3. Add Song to Playlist
-                      |  4. View Songs
-                      |  5. View Playlists
-                      |  0. Exit
-                      |  > """.trimMargin("|"))
+            
+                      >----------------------------------
+                      >|          Playlist App          |
+                      >----------------------------------             
+                      >|  CREATE MENU                   |
+                      >|  1. Add Song                   |
+                      >|  2. Create Playlist            |
+                      >----------------------------------
+                      >|  ADD TO PLAYLIST               |
+                      >|  3. Add Song to Playlist       |
+                      >----------------------------------
+                      >|   VIEW MENU                    |
+                      >|  4. View Songs                 |
+                      >|  5. View Playlists             |
+                      >|  6. List Songs in Playlists    |
+                      >----------------------------------
+                      >|  0. Exit                       |
+                      >----------------------------------
+                      >|  > """.trimMargin(">"))
 
         when (choice) {
             1 -> {
@@ -58,6 +69,7 @@ fun main() {
                 val playlistId = readNextInt("Enter playlist id: ")
                 println(playlistSongAPI.listSongsInPlaylist(playlistId))
             }
+
             0 -> {
                 println("Exiting...")
             }

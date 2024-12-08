@@ -1,29 +1,58 @@
-<h1> Playlist App - Version 1.0</h1>
+<h1> Playlist App - Version 2.0</h1>
 
 <h4>A simple console-based application that simulates the management of playlists and songs. The app follows a many-to-many relationship structure and allows users to interact with playlists and songs through a menu-driven interface.</h4>
 
 
+<h2>Features</h2><h1>Playlist App - Version 2.0</h1>
+
+<p>A simple console-based application that simulates the management of playlists and songs. The app follows a many-to-many relationship structure and allows users to interact with playlists and songs through a menu-driven interface.</p>
+
 <h2>Features</h2>
+
 <h3>🎵 Core Features:</h3>
 <ul>
-<li>Create Playlists: Allows users to create new playlists.</li>
-<li>Delete Playlists: Enables users to delete existing playlists.</li>
-<li>View Playlists: Users can view the details of all playlists.</li>
-<li>Add Songs to Playlists: Users can add songs to a playlist.</li>
-<li>Favourite Songs: Ability to mark songs as favourites.</li>
-    </ul>
+    <li><strong> Add Songs To App </strong>: Allows users to add songs onto the app.</li>
+    <li><strong>Create Playlists</strong>: Allows users to create new playlists.</li>
+    <li><strong>View Playlists</strong>: Users can view the details of all playlists.</li>
+    <li><strong>View Songs</strong>: Users can view the songs that they have added on to the App.</li>
+    <li><strong>Add Songs to Playlists</strong>: Users can add songs to a playlist.</li>
+    <li><strong> List the songs in a Playlist</strong>: Shows which songs are in a certain playlist</li>
+</ul>
+
 <h3>📋 Utility Features:</h3>
 <ul>
-<li>Menu-Driven Interface: A user-friendly console interface for interacting with the application.</li>
-<li>Logging Capabilities: Logging has been integrated using the Kotlin-Logging dependency for tracking application events and debugging purposes.</li>
-<li>UserInput Utility: A utility class to handle robust and flexible console input, ensuring smooth interaction with the app.</li>
-    </ul>
-<h3>What's Missing</h3>
-<ul>
-<li>Playlist and Song Models: As of version 1.0, the Playlist and Song models have not yet been added. These models will be part of future updates.</li>
+    <li><strong>Menu-Driven Interface</strong>: A user-friendly console interface for interacting with the application.</li>
+    <li><strong>Logging Capabilities</strong>: Logging has been integrated using the Kotlin-Logging dependency for tracking application events and debugging purposes.</li>
+    <li><strong>UserInput Utility</strong>: A utility class to handle robust and flexible console input, ensuring smooth interaction with the app.</li>
 </ul>
-    <h3>Requirements</h3>
-    <ul>
-<li>Kotlin: This app is built using Kotlin.
-<li>Kotlin-Logging: Integrated for logging purposes.
-    </ul>
+
+
+<h2>Requirements</h2>
+<ul>
+    <li><strong>Kotlin</strong>: This app is built using Kotlin.</li>
+    <li><strong>Kotlin-Logging</strong>: Integrated for logging purposes.</li>
+    <li><strong>JDK</strong>: Java Development Kit (JDK) version 8 or later.</li>
+</ul>
+
+<h2>Installation & Setup</h2>
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone https://github.com/your-username/playlist-app.git</code></pre>
+    </li>
+    <li>Navigate to the project directory:
+        <pre><code>cd playlist-app</code></pre>
+    </li>
+    <li>Build the project using your preferred IDE or build tool (e.g., IntelliJ IDEA or Gradle).</li>
+    <li>Run the application using the main function.</li>
+</ol>
+
+<h2>Usage</h2>
+<ol>
+    <li>Launch the app from the console.</li>
+    <li>Use the menu to navigate through the different options (e.g., create playlists, add songs, view playlists, etc.).</li>
+</ol>
+
+<h2>License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+
+

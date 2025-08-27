@@ -8,49 +8,61 @@ import org.junit.jupiter.api.Test
 
 class SongAPITest {
 
-    private var learnKotlin: Song? = null
-    private var summerHoliday: Song? = null
-    private var codeApp: Song? = null
-    private var testApp: Song? = null
-    private var swim: Song? = null
+    private var bohemianRhapsody: Song? = null
+    private var hereComesTheSun: Song? = null
+    private var blindingLights: Song? = null
+    private var rollingInTheDeep: Song? = null
+    private var shapeOfYou: Song? = null
     private var populatedSong: SongAPI? = SongAPI()
     private var emptySong: SongAPI? = SongAPI()
 
     @BeforeEach
     fun setup() {
-        learnKotlin = Song(5, "Learning Kotlin", "College", "false")
-        summerHoliday = Song(1, "Summer Holiday to France", "Holiday", "false")
-        codeApp = Song(4, "Code App", "Work", "false")
-        testApp = Song(4, "Test App", "Work", "false")
-        swim = Song(3, "Swim - Pool", "Hobby", "false")
+        bohemianRhapsody = Song(1, "Bohemian Rhapsody", "Queen", "5:55")
+        hereComesTheSun = Song(2, "Here Comes the Sun", "The Beatles", "3:06")
+        blindingLights = Song(3, "Blinding Lights", "The Weeknd", "3:20")
+        rollingInTheDeep = Song(4, "Rolling in the Deep", "Adele", "3:48")
+        shapeOfYou = Song(5, "Shape of You", "Ed Sheeran", "4:24")
 
-        //adding 5 Note to the notes api
-        populatedSong!!.addSong(learnKotlin!!)
-        populatedSong!!.addSong(summerHoliday!!)
-        populatedSong!!.addSong(codeApp!!)
-        populatedSong!!.addSong(testApp!!)
-        populatedSong!!.addSong(swim!!)
-
+        // adding 5 songs to the song api
+        populatedSong!!.addSong(bohemianRhapsody!!)
+        populatedSong!!.addSong(hereComesTheSun!!)
+        populatedSong!!.addSong(blindingLights!!)
+        populatedSong!!.addSong(rollingInTheDeep!!)
+        populatedSong!!.addSong(shapeOfYou!!)
     }
 
     @AfterEach
     fun tearDown() {
-        learnKotlin = null
-        summerHoliday = null
-        codeApp = null
-        testApp = null
-        swim = null
+        bohemianRhapsody = null
+        hereComesTheSun = null
+        blindingLights = null
+        rollingInTheDeep = null
+        shapeOfYou = null
         populatedSong = null
         emptySong = null
     }
 
     @Test
-    fun `adding a Song to a populated list adds to ArrayList`() {
-        val newSong = Song(1, "Study Lambdas", "College", "true")
-        assertTrue(populatedSong!!.addSong(newSong))
+    fun `populatedSong should have 5 songs`() {
+        val songCount = populatedSong!!.listSongs().count { true } // counts all songs
+        assertTrue(songCount == 5)
     }
 
-    private fun assertTrue(addSong: Unit) {
-
+    @Test
+    fun `count songs by Queen`() {
+        val queenSongs = populatedSong!!.listSongs().count { it.artist == "Queen" }
+        assertTrue(queenSongs == 1)
     }
+
+    @Test
+    fun `adding a new song increases song count`() {
+        val newSong = Song(0, "Smells Like Teen Spirit", "Nirvana", "5:01")
+        val initialCount = populatedSong!!.listSongs().count { true }
+        populatedSong!!.addSong(newSong)
+        val newCount = populatedSong!!.listSongs().count { true }
+        assertTrue(newCount == initialCount + 1)
+    }
+
+
 }

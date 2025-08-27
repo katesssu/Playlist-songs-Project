@@ -9,7 +9,7 @@
 
 <h2>Features</h2>
 
-<h3>🎵 Core Features:</h3>
+<h3>🎵Core Features:</h3>
 <ul>
     <li><strong> Add Songs To App </strong>: Allows users to add songs onto the app.</li>
     <li><strong>Create Playlists</strong>: Allows users to create new playlists.</li>
@@ -19,7 +19,7 @@
     <li><strong> List the songs in a Playlist</strong>: Shows which songs are in a certain playlist</li>
 </ul>
 
-<h3>📋 Utility Features:</h3>
+<h3>📋Utility Features:</h3>
 <ul>
     <li><strong>Menu-Driven Interface</strong>: A user-friendly console interface for interacting with the application.</li>
     <li><strong>Logging Capabilities</strong>: Logging has been integrated using the Kotlin-Logging dependency for tracking application events and debugging purposes.</li>

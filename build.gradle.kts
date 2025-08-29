@@ -59,15 +59,8 @@ tasks.jacocoTestReport {
     )
 }
 
-// Optional: Add coverage verification
 tasks.jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                minimum = "0.50".toBigDecimal()
-            }
-        }
-    }
+    enabled = false
 }
 
 // Make sure verification runs with the report

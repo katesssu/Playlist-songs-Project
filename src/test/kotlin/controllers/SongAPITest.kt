@@ -64,5 +64,67 @@ class SongAPITest {
         assertTrue(newCount == initialCount + 1)
     }
 
+    @Test
+    fun `adding a song with duplicate ID should not increase count`() {
+        val duplicateSong = Song(1, "Different Title", "Queen", "4:00")
+        val initialCount = populatedSong!!.listSongs().count { true }
+        populatedSong!!.addSong(duplicateSong)
+        val newCount = populatedSong!!.listSongs().count { true }
+        assertTrue(newCount == initialCount) // Count should not change
+    }
+
+    @Test
+    fun `adding a song to empty collection increases count from 0 to 1`() {
+        val newSong = Song(6, "New Song", "New Artist", "3:30")
+        val initialCount = emptySong!!.listSongs().count { true }
+        emptySong!!.addSong(newSong)
+        val newCount = emptySong!!.listSongs().count { true }
+        assertTrue(newCount == initialCount + 1)
+    }
+
+    @Test
+    fun `findSongById should return correct song`() {
+        val foundSong = populatedSong!!.findSongById(0) // Note: IDs start from 0 due to getId() implementation
+        assertTrue(foundSong != null)
+        assertTrue(foundSong?.songName == "Bohemian Rhapsody")
+    }
+
+    @Test
+    fun `findSongById should return null for non-existent ID`() {
+        val foundSong = populatedSong!!.findSongById(999)
+        assertTrue(foundSong == null)
+    }
+
+    @Test
+    fun `findSongsByArtist should return correct songs`() {
+        val queenSongs = populatedSong!!.findSongsByArtist("Queen")
+        assertTrue(queenSongs.size == 1)
+        assertTrue(queenSongs[0].songName == "Bohemian Rhapsody")
+    }
+
+    @Test
+    fun `findSongsByArtist should return empty list for non-existent artist`() {
+        val result = populatedSong!!.findSongsByArtist("Non-existent Artist")
+        assertTrue(result.isEmpty())
+    }
+
+    @Test
+    fun `searchByTitle should find matching songs`() {
+        val result = populatedSong!!.searchByTitle("Bohemian Rhapsody")
+        assertTrue(result.contains("Bohemian Rhapsody"))
+        assertTrue(result.contains("Queen"))
+    }
+
+    @Test
+    fun `searchByTitle should return not found message`() {
+        val result = populatedSong!!.searchByTitle("Non-existent Song")
+        assertTrue(result == "No songs found with name: Non-existent Song")
+    }
+
+    @Test
+    fun `simple test to verify setup`() {
+        assertTrue(true) // This should always pass
+    }
+
 
 }

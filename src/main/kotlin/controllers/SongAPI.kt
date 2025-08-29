@@ -61,7 +61,13 @@ class SongAPI {
             .ifEmpty { "No songs found with name: $name" }
     }
 
+    fun findSongById(id: Int): Song? {
+        return songs.find { it.songId == id }
+    }
 
+    fun findSongsByArtist(artist: String): List<Song> {
+        return songs.filter { it.artist.equals(artist, ignoreCase = true) }
+    }
 
 
 

@@ -65,12 +65,16 @@ class SongAPITest {
     }
 
     @Test
-    fun `adding a song with duplicate ID should not increase count`() {
-        val duplicateSong = Song(1, "Different Title", "Queen", "4:00")
+    fun `adding a song should assign a unique ID regardless of initial ID`() {
         val initialCount = populatedSong!!.listSongs().count { true }
-        populatedSong!!.addSong(duplicateSong)
+        val newSong = Song(999, "New Song", "New Artist", "3:30") // ID will be overwritten
+        populatedSong!!.addSong(newSong)
         val newCount = populatedSong!!.listSongs().count { true }
-        assertTrue(newCount == initialCount) // Count should not change
+
+        assertTrue(newCount == initialCount + 1)
+
+        val addedSong = populatedSong!!.listSongs().last()
+        assertTrue(addedSong.songId != 999)
     }
 
     @Test

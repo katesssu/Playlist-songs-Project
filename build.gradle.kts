@@ -23,10 +23,6 @@ dependencies {
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.9.20")
 }
 
-tasks.test {
-    useJUnitPlatform()
-
-}
 
 // Configure JaCoCo version (optional, defaults to latest)
 jacoco {
@@ -34,7 +30,11 @@ jacoco {
 }
 
 tasks.test {
-    finalizedBy(tasks.jacocoTestReport) // Generate report after tests
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.jacocoTestReport {
@@ -45,14 +45,13 @@ tasks.jacocoTestReport {
         csv.required.set(false) // Disable CSV if not needed
     }
 
-    // Define what files to include in coverage (Kotlin classes)
+    // Define what files to include in coverage
     classDirectories.setFrom(
         files(classDirectories.files.map {
             fileTree(it).apply {
                 exclude(
-                    "**/Q*", // Exclude generated Q-classes if using QueryDSL
-                    "**/*Test*", // Exclude test classes
-                    "**/*Application*" // Exclude main application class if desired
+                    "**/*Test*",
+                    "**/*Application*"
                 )
             }
         })
@@ -67,5 +66,4 @@ tasks.jacocoTestCoverageVerification {
 tasks.jacocoTestReport {
     finalizedBy(tasks.jacocoTestCoverageVerification)
 }
-
 

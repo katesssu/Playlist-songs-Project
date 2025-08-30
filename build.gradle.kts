@@ -67,3 +67,4 @@ tasks.jacocoTestReport {
     finalizedBy(tasks.jacocoTestCoverageVerification)
 }
 
+allprojects { apply(plugin = "jacoco") }

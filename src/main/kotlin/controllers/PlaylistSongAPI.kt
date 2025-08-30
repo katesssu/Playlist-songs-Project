@@ -17,8 +17,12 @@ class PlaylistSongAPI {
      * @param songId The ID of the song to add.
      * @param playlistId The ID of the playlist to which the song will be added.
      */
-    fun addSongToPlaylist(songId: Int, playlistId: Int) {
-        playlistSongs.add(PlaylistSong(songId, playlistId))  // Add the new PlaylistSong to the list
+    fun addSongToPlaylist(songId: Int, playlistId: Int): Boolean {
+        if (playlistSongs.any { it.songId == songId && it.playlistId == playlistId }) {
+            return false
+        }
+        playlistSongs.add(PlaylistSong(songId, playlistId))
+        return true
     }
 
     /**

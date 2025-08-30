@@ -1,7 +1,5 @@
 package utils
 
-import kotlin.Exception as Exception
-
 fun readIntNotNull() = readlnOrNull()?.toIntOrNull() ?: -1
 
 fun readNextInt(prompt: String?): Int {
@@ -19,7 +17,6 @@ fun readNextLine(prompt: String?): String {
     print(prompt)
     return readln()
 }
-
 
 fun readNextChar(prompt: String?): Char {
     do {

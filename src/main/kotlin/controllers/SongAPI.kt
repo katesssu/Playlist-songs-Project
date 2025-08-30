@@ -46,4 +46,30 @@ class SongAPI {
      * @return List of songs.
      */
     fun listSongs() = songs
+
+    /**
+     * Searches for songs that match the given name.
+     *
+     * @param name The song name to search for.
+     * @return A formatted string with matching songs (index and details), or a message if none are found.
+     */
+    fun searchByTitle(name: String): String {
+        return songs
+            .withIndex()
+            .filter { it.value.songName.equals(name, ignoreCase = true) }
+            .joinToString(separator = "\n") { "${it.index}: ${it.value}" }
+            .ifEmpty { "No songs found with name: $name" }
+    }
+
+    fun findSongById(id: Int): Song? {
+        return songs.find { it.songId == id }
+    }
+
+    fun findSongsByArtist(artist: String): List<Song> {
+        return songs.filter { it.artist.equals(artist, ignoreCase = true) }
+    }
+
+
+
+
 }

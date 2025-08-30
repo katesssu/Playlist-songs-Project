@@ -16,24 +16,24 @@ fun main() {
     do {
         choice = readNextInt("""
             
-                      >----------------------------------
-                      >|          Playlist App          |
-                      >----------------------------------             
-                      >|  CREATE MENU                   |
-                      >|  1. Add Song                   |
-                      >|  2. Create Playlist            |
-                      >----------------------------------
-                      >|  ADD TO PLAYLIST               |
-                      >|  3. Add Song to Playlist       |
-                      >----------------------------------
-                      >|   VIEW MENU                    |
-                      >|  4. View Songs                 |
-                      >|  5. View Playlists             |
-                      >|  6. List Songs in Playlists    |
-                      >----------------------------------
-                      >|  0. Exit                       |
-                      >----------------------------------
-                      >|  > """.trimMargin(">"))
+            >==================================
+            >|       PLAYLIST MANAGER         |
+            >==================================
+            >| SONGS MANAGEMENT               |
+            >| 1. Add Song                    |
+            >| 2. View All Songs              |
+            >==================================
+            >| PLAYLIST MANAGEMENT            |
+            >| 3. Create Playlist             |
+            >| 4. View All Playlists          |
+            >==================================
+            >| PLAYLIST CONTENT               |
+            >| 5. Add Song to Playlist        |
+            >| 6. View Songs in Playlist      |
+            >==================================
+            >| 0. Exit                        |
+            >==================================
+            > Enter choice: """.trimMargin(">"))
 
         when (choice) {
             1 -> {

@@ -85,10 +85,11 @@ class PlaylistSongAPITest {
     }
 
     @Test
-    fun `adding duplicate song-playlist association creates duplicate entry`() {
+    fun `adding duplicate song-playlist association returns false and does not increase count`() {
         val initialCount = playlistSongAPI!!.listSongsInPlaylist(1).size
-        playlistSongAPI!!.addSongToPlaylist(1, 1) // Add duplicate association
-        assertEquals(initialCount + 1, playlistSongAPI!!.listSongsInPlaylist(1).size)
+        val result = playlistSongAPI!!.addSongToPlaylist(1, 1) // Try to add duplicate
+        assertFalse(result) // Should return false for duplicate
+        assertEquals(initialCount, playlistSongAPI!!.listSongsInPlaylist(1).size) // Count should not change
     }
 
     @Test
